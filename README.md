@@ -1,11 +1,13 @@
+Bitrix24 PHP SDK (https://github.com/mesilov/bitrix24-php-sdk) for Laravel through Dependency Injection (Service Provider, Singleton).
+
 ### 1. Installation
 
-`composer require vipblogger/bitrix24-di`
+`composer require vipblogger/laravel-bitrix24`
 
 ### 2. Setup
 Publishing the config file and migrate
 
-`php artisan vendor:publish --provider="Vipblogger\Bitrix24DI\Bitrix24DIServiceProvider"`
+`php artisan vendor:publish --provider="Vipblogger\LaravelBitrix24\LaravelBitrix24ServiceProvider"`
 
 `php artisan migrate`
 
@@ -16,10 +18,10 @@ Register local application with redirect URI `/bitrix-redirect-uri`. Redirect UR
 .env example
 
 ```
-B24_APPLICATION_SCOPE=task,user
 B24_APPLICATION_ID=local.6007b39598c****.120****
 B24_APPLICATION_SECRET=oq33VjMcuperGAnB...
 B24_DOMAIN=example.bitrix24.ru
+B24_APPLICATION_SCOPE=task,user
 B24_REDIRECT_URI=/bitrix-redirect-uri
 ```
 
@@ -29,7 +31,7 @@ Go to route *your_project.com/**bitrix24di***
 ### 6. Usage
 
 ```php
-use Vipblogger\Bitrix24DI\Bitrix;
+use Vipblogger\LaravelBitrix24\Bitrix;
 
 Route::get('/list', function (Bitrix $bitrix) {
     $result = $bitrix->call('lists.get', [
@@ -40,3 +42,5 @@ Route::get('/list', function (Bitrix $bitrix) {
     var_dump($result);
 });
 ```
+
+More documentation: https://github.com/mesilov/bitrix24-php-sdk

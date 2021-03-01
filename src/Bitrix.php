@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Vipblogger\Bitrix24DI;
+namespace Vipblogger\LaravelBitrix24;
 
 
 use Bitrix24\Bitrix24;

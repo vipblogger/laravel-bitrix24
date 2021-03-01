@@ -1,16 +1,16 @@
 <?php
 
-use Vipblogger\Bitrix24DI\Bitrix;
+use Vipblogger\LaravelBitrix24\Bitrix;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::name('bitrix24di.')->prefix('bitrix24di')->group(static function () {
+Route::name('laravel-bitrix24.')->prefix('laravel-bitrix24')->group(static function () {
 
     Route::get('/', function (Bitrix $bitrix) {
         if (settings('b24_refresh_token', null) === null) {
-            echo 'Авторизуйся по <a href="' . route('bitrix24di.login') . '" target="_blank">ссылке</a>
+            echo 'Авторизуйся по <a href="' . route('laravel-bitrix24.login') . '" target="_blank">ссылке</a>
                 и вставь ссылку сюда:
-                <form action="' . route('bitrix24di.save') . '" method="POST">
+                <form action="' . route('laravel-bitrix24.save') . '" method="POST">
                 <input type="text" name="link">
                 <button type="submit">Отправить</button>
                 ' . csrf_field() . '
@@ -23,7 +23,7 @@ Route::name('bitrix24di.')->prefix('bitrix24di')->group(static function () {
                 echo 'Связь с Битрикс: НЕ УСТАНОВЛЕНА!';
             }
 
-            echo ' <a href="'.route('bitrix24di.logout').'">Выйти</a>';
+            echo ' <a href="'.route('laravel-bitrix24.logout').'">Выйти</a>';
         }
 
         return '';
@@ -31,7 +31,7 @@ Route::name('bitrix24di.')->prefix('bitrix24di')->group(static function () {
 
     Route::get('/login', function (Bitrix $bitrix) {
         if (settings('b24_refresh_token') === null) {
-            return redirect('https://' . $bitrix->getDomain() . '/oauth/authorize/?redirect_uri='.url(config('bitrix24di.REDIRECT_URI')).'&client_id=' .
+            return redirect('https://' . $bitrix->getDomain() . '/oauth/authorize/?redirect_uri='.url(config('laravel-bitrix24.REDIRECT_URI')).'&client_id=' .
                 urlencode($bitrix->getApplicationId()));
         }
 
@@ -45,7 +45,7 @@ Route::name('bitrix24di.')->prefix('bitrix24di')->group(static function () {
             'member_id' => null,
         ]);
 
-        return redirect()->route('bitrix24di.index');
+        return redirect()->route('laravel-bitrix24.index');
     })->name('logout');
 
     Route::post('/save', function (Request $request, Bitrix $bitrix) {
@@ -53,14 +53,14 @@ Route::name('bitrix24di.')->prefix('bitrix24di')->group(static function () {
         $code = $params['code'];
 
         saveCode($bitrix, $code);
-        return redirect()->route('bitrix24di.index');
+        return redirect()->route('laravel-bitrix24.index');
     })->name('save');
 });
 
-Route::get(config('bitrix24di.REDIRECT_URI'), function (Request $request, Bitrix $bitrix) {
+Route::get(config('laravel-bitrix24.REDIRECT_URI'), function (Request $request, Bitrix $bitrix) {
     $code = $request->input('code');
     saveCode($bitrix, $code);
-    return redirect()->route('bitrix24di.index');
+    return redirect()->route('laravel-bitrix24.index');
 });
 
 function saveCode($bitrix, $code)

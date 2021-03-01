@@ -1,6 +1,6 @@
 {
-    "name": "vipblogger/bitrix24-di",
-    "description": "This is a wrapper for the Bitrix24 PHP SDK. Allows you to use Bitrix through Dependency Injections.",
+    "name": "vipblogger/laravel-bitrix24",
+    "description": "This is a wrapper for the Bitrix24 PHP SDK. Allows you to use Bitrix through Dependency Injection.",
     "type": "library",
     "version": "1.0.0",
     "require": {
@@ -17,13 +17,13 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Vipblogger\\Bitrix24DI\\Bitrix24DIServiceProvider"
+                "Vipblogger\\LaravelBitrix24\\LaravelBitrix24ServiceProvider"
             ]
         }
     },
     "autoload": {
         "psr-4": {
-            "Vipblogger\\Bitrix24DI\\": "src"
+            "Vipblogger\\LaravelBitrix24\\": "src"
         }
     }
 }

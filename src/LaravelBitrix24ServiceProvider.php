@@ -1,6 +1,6 @@
 <?php
 
-namespace Vipblogger\Bitrix24DI;
+namespace Vipblogger\LaravelBitrix24;
 
 use Bitrix24\Exceptions\Bitrix24TokenIsInvalidException;
 use Illuminate\Database\QueryException;
@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 
-class Bitrix24DIServiceProvider extends ServiceProvider
+class LaravelBitrix24ServiceProvider extends ServiceProvider
 {
     public function register()
     {
@@ -20,17 +20,17 @@ class Bitrix24DIServiceProvider extends ServiceProvider
     public function boot(Bitrix $obB24App)
     {
         $this->publishes([
-            __DIR__.'/../config/bitrix24di.php' => config_path('bitrix24di.php'),
+            __DIR__ . '/../config/laravel-bitrix24.php' => config_path('laravel-bitrix24.php'),
         ]);
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
         // Bitrix settings
         // create a log channel
-        $log = new Logger('bitrix24');
-        $log->pushHandler(new StreamHandler(storage_path() . '/logs/bitrix24.log', Logger::DEBUG));
+        $log = new Logger('laravel-bitrix24');
+        $log->pushHandler(new StreamHandler(storage_path() . '/logs/laravel-bitrix24.log', Logger::DEBUG));
 
-        $arParams = config('bitrix24di');
+        $arParams = config('laravel-bitrix24');
 
         if (!$arParams) {
             return false;
