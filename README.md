@@ -26,7 +26,7 @@ B24_REDIRECT_URI=/bitrix-redirect-uri
 ```
 
 ### 5. Bitrix24 settings
-Go to route *your_project.com/**bitrix24di***
+Go to route *your_project.com/**laravel-bitrix24***
 
 ### 6. Usage
 
