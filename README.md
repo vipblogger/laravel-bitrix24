@@ -35,8 +35,8 @@ Route::get('/list', function (Bitrix $bitrix) {
 	$result = $bitrix->call('lists.get', [
         'IBLOCK_TYPE_ID' => 'lists_socnet',
         'SOCNET_GROUP_ID' => 15
-    ]);
-
-	var_dump($result);
+        ]);
+        
+var_dump($result);
 });
 ```
