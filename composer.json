@@ -2,7 +2,7 @@
     "name": "vipblogger/laravel-bitrix24",
     "description": "This is a wrapper for the Bitrix24 PHP SDK. Allows you to use Bitrix through Dependency Injection.",
     "type": "library",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "require": {
         "mesilov/bitrix24-php-sdk": "^0.7.0",
         "qcod/laravel-settings": "^1.0"
