@@ -32,11 +32,11 @@ Go to route *your_project.com/**bitrix24di***
 use Vipblogger\Bitrix24DI\Bitrix;
 
 Route::get('/list', function (Bitrix $bitrix) {
-	$result = $bitrix->call('lists.get', [
+    $result = $bitrix->call('lists.get', [
         'IBLOCK_TYPE_ID' => 'lists_socnet',
         'SOCNET_GROUP_ID' => 15
         ]);
-        
-var_dump($result);
+
+    var_dump($result);
 });
 ```
