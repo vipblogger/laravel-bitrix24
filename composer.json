@@ -20,5 +20,10 @@
                 "Vipblogger\\Bitrix24DI\\Bitrix24DIServiceProvider"
             ]
         }
+    },
+    "autoload": {
+        "psr-4": {
+            "Vipblogger\\Bitrix24DI\\": "src"
+        }
     }
 }

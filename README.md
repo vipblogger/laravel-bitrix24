@@ -10,8 +10,7 @@ Publishing the config file and migrate
 `php artisan migrate`
 
 ### 3. In Bitrix24
-Register local application with redirect URI `/bitrix-redirect-uri`
-Redirect URI is optional.
+Register local application with redirect URI `/bitrix-redirect-uri`. Redirect URI is optional.
 
 ### 4. Edit .env
 .env example
