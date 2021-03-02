@@ -33,13 +33,19 @@ Go to route *your_project.com/**laravel-bitrix24***
 ```php
 use Vipblogger\LaravelBitrix24\Bitrix;
 
-Route::get('/list', function (Bitrix $bitrix) {
+Route::get('/test1', function (Bitrix $bitrix) {
     $result = $bitrix->call('lists.get', [
         'IBLOCK_TYPE_ID' => 'lists_socnet',
         'SOCNET_GROUP_ID' => 15
         ]);
 
     var_dump($result);
+});
+
+Route::get('/test2', function (Bitrix $bitrix) {
+    $obB24User = new \Bitrix24\User\User($bitrix);
+    $arCurrentB24User = $obB24User->current();
+    var_dump($arCurrentB24User);
 });
 ```
 

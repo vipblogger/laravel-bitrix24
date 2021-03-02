@@ -4,7 +4,8 @@
     "type": "library",
     "version": "1.0.2",
     "require": {
-        "mesilov/bitrix24-php-sdk": "^0.7.0",
+        "php": "^7.3",
+        "mesilov/bitrix24-php-sdk": "0.7.*",
         "qcod/laravel-settings": "^1.0"
     },
     "license": "MIT",
